@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Custom insight</title>
+	<script type="module" async>
+		import {registerInsight, idRef, newMeasure, newAttribute} from 'http://127.0.0.1:8080/components/<workspace-id>.js?devToken=<tiger-token>';
+
+		registerInsight('custom-id', 'line', {
+			trendBy: newAttribute("start_time.dayOfMonth"),
+			measures: [newMeasure(idRef("failed_runs", "measure"))],
+		});
+	</script>
+</head>
+<body>
+<gd-custom-insight ref="custom-id"></gd-custom-insight>
+</body>
+</html>
